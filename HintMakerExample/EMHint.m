@@ -136,6 +136,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #pragma mark ---------------------------------->> 
 #pragma mark -------------->>cleanup
 - (void)dealloc {
+    self.hintDelegate = nil;
     [_modalView release];
     [super dealloc];
 }
