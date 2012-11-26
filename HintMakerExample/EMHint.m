@@ -100,8 +100,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         //label
         UIFont *ft = [UIFont fontWithName:@"Helvetica" size:17.0];
         CGSize sz = [message sizeWithFont:ft constrainedToSize:CGSizeMake(250, 1000)];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(floorf(presentationPlace.center.x - sz.width/2),
-                                                                   floorf(presentationPlace.center.y - sz.height/2),
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(floorf((presentationPlace.frame.size.width/2) - sz.width/2),
+                                                                   floorf((presentationPlace.frame.size.height/2) - sz.height/2),
                                                                    floorf(sz.width),
                                                                    floorf(sz.height +10
                                                                           ))];
