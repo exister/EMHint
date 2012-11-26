@@ -114,45 +114,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         CGFloat radius = [[_radiusArray objectAtIndex:i] floatValue];
         
         //draw the shape
-        CGMutablePathRef path = CGPathCreateMutable();
-        //
-        //draw a rect around view
-        CGPathAddRect(path, NULL, CGRectMake(c.x - radius, c.y -radius,100,100));
-        CGPathAddLineToPoint(path, NULL, c.x + radius, c.y - radius);
-        CGPathAddLineToPoint(path, NULL, c.x + radius, c.y + radius);
-        CGPathAddLineToPoint(path, NULL, c.x - radius, c.y + radius);
-        CGPathAddLineToPoint(path, NULL, c.x - radius, c.y);
-        CGPathAddLineToPoint(path, NULL, c.x, c.y);
-        /*
-         
-         //draw a rectangle like spotlight --- i'll get to this later
-         CGPathMoveToPoint(path, NULL, c.x-radius, c.y-radius);
-         CGPathAddLineToPoint(path, NULL, c.x, c.y-radius);
-         CGPathAddArcToPoint(path, NULL, c.x+radius, c.y-radius, c.x+radius, c.y, radius);
-         CGPathAddArcToPoint(path, NULL, c.x+radius, c.y +radius, c.x , c.y+radius, radius);
-         CGPathAddArcToPoint(path, NULL, c.x -radius, c.y + radius, c.x-radius, c.y, radius);
-         CGPathAddArcToPoint(path, NULL, c.x-radius, c.y - radius, c.x, c.y-radius, radius);
-         CGContextAddPath(context, path);    
-         CGContextClip(context);
-         
-         //fill with gradient
-         CGContextDrawRadialGradient(context, gradientRef, c, 0.0f, c, _radius*2, 0);
-         
-         
-         */
-        CGContextSaveGState(context);
-        
-        CGContextAddPath(context, path);  
-        CGPathRelease(path);
-        CGContextClip(context);
-        
         //add gradient
         //create the gradient Ref
         CGGradientRef gradientRef = CGGradientCreateWithColorComponents(colorspace, components, colorLocations, 2);
         CGContextDrawRadialGradient(context, gradientRef, c, 0.0f, c, radius*2, 0);
         CGGradientRelease(gradientRef);
-        
-        CGContextRestoreGState(context);
     }
     
     CGColorSpaceRelease(colorspace);
